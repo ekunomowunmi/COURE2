@@ -18,8 +18,9 @@ export class NewTaskComponent implements OnInit {
   priority!: 'LOW' | 'HIGH' | 'NEUTRAL';
   status?: 'pending' | 'inprogress' | 'completed'
   minDate!: Date;
+  closeMessage = '';
   // title, description, due date, priority, and status(e.g., pending, in progress, completed
-  constructor(private formBuilder: FormBuilder, private dataService: DataService, public modalRef: MdbModalRef<NewTaskComponent>) {
+  constructor(private formBuilder: FormBuilder, private dataService: DataService, private modalRef: MdbModalRef<NewTaskComponent>) {
   }
 
 
@@ -52,9 +53,8 @@ export class NewTaskComponent implements OnInit {
       } else {
         this.dataService.editTask(form)
       }
-      console.log(this.dataService.getAllTasks())
-      const closeMessage = 'Modal closed';
-      this.modalRef.close(closeMessage)
+      this.closeMessage = 'Modal closed';
+      this.modalRef.close(this.closeMessage)
 
     }
   }
