@@ -1,0 +1,96 @@
+<!-- <button (click)="gotoNewTask()">Go to new</button> -->
+<div class="container">
+  <div class="header header-div padding-vertical d-flex" style="justify-content: space-between;">
+    <div>Task Management</div>
+    <div class="flex-right"><button class="btn btn-primary" (click)="openModal()">Create new task</button></div>
+  </div>
+
+
+  <div class="body">
+    <div>
+      <button class="btn btn-secondary margin-y" (click)=" openFilter=!openFilter">
+        Filter <i class="fa-solid fa-filter"></i>
+      </button>
+
+      <div class="row" *ngIf="openFilter">
+        <div mdbDropdown class="dropdown">
+          <button class="btn btn-primary dropdown-toggle margin-right-1" type="button" id="dropdownMenuButton"
+            aria-expanded="false" (click)="openDropdown = !openDropdown" mdbDropdownToggle>
+            Priority
+          </button>
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" aria-expanded="false"
+            (click)="openStatus = !openStatus" mdbDropdownToggle>
+            Status
+          </button>
+          <!-- <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul> -->
+          <div *ngIf="openDropdown">
+            <!-- <mat-form-field appearance="fill">
+              <mat-label>Select Filters</mat-label>
+              <mat-select [(ngModel)]="selectedPriorities" multiple>
+                <mat-option *ngFor="let priority of priorityList;" [value]="priority">
+                  <mat-checkbox [checked]="isSelected(filter)" (change)="toggleSelection($event, filter)">{{ filter
+                    }}</mat-checkbox>
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+            <mat-selection-list mdbDropdownMenu [closeOnOutsideClick]="true" class="dropdown-menu" #priorities>
+              <div *ngFor="let priority of priorityList;">
+                <mat-checkbox class="dropdown-item" [checked]="isSelected"
+                  (change)="onPriorityFilter($event, priority)">{{ priority
+                  }}</mat-checkbox>
+              </div>
+            </mat-selection-list>
+            <p>
+              Options selected: {{priorities.selectedOptions.selected.length}}
+            </p>
+          </div>
+          <div *ngIf="openStatus">
+            <mat-selection-list mdbDropdownMenu class="dropdown-menu" #statuss>
+              <div *ngFor="let status of statuses">
+                <mat-checkbox class="dropdown-item" (change)="onStatusFilter($event, status)">{{ status
+                  }}</mat-checkbox>
+              </div>
+            </mat-selection-list>
+            <p>
+              Options selected: {{statuss.selectedOptions.selected.length}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row margin-1">
+          PENDING
+        </div>
+        <div class="row" *ngFor="let task of pendingTasks">
+          <app-card [task]="task"></app-card>
+        </div>
+
+
+      </div>
+      <div class="col">
+        <div class="row margin-1">
+          IN PROGRESS
+        </div>
+        <div class="row" *ngFor="let task of taskInProgress">
+          <app-card [task]="task"></app-card>
+        </div>
+      </div>
+      <div class="col">
+        <div class="row margin-1">
+          DONE
+        </div>
+        <div class="row" *ngFor="let task of completedTasks">
+          <app-card [task]="task"></app-card>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

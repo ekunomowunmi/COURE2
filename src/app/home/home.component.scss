@@ -1,0 +1,44 @@
+.box-shadow {
+  box-shadow: rgba(149, 157, 165, 0.1) 0px 0px 24px 4px;
+}
+
+.header-div {
+  font-size: xx-large;
+  font-weight: bold;
+  color: black;
+
+}
+
+.padding-horizontal {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.padding-vertical {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.margin-1 {
+  margin: 1rem
+}
+
+.margin-y {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.margin-x {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.margin-right-1 {
+  margin-right: 1rem;
+}
+
+.flex-right {
+  display: 'flex';
+  flex-direction: 'row';
+  justify-content: 'flex-end';
+}

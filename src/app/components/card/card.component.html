@@ -1,0 +1,37 @@
+<div class="card margin-1">
+    <div class="card-body">
+        <div class="d-flex" style="justify-content: space-between;">
+            <h2 class="card-title">{{task.title}}</h2>
+            <button (click)="openModal()" class="transparent"
+                style="background: transparent; border: none; margin-top: -1rem;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <p class="card-text">{{task.description}} </p>
+        <div>
+            Status: <span class="badge rounded-pill margin-bottom"
+                [ngStyle]="{'color':task.status == 'pending' ? 'rgb(28,101,125)':task.status == 'completed' ? 'blue': 'grey'}"
+                [ngClass]="{'badge-primary': task.status == 'completed','badge-warning':task.status == 'inprogress','badge-info':task.status == 'pending'}">{{task.status}}</span>
+            <!-- [ngClass]="{'my_class': step === 'step1', 'my_class2' : step === 'step2' }" -->
+
+        </div>
+        <div>
+            Priority: <span class="badge rounded-pill  margin-bottom"
+                [ngStyle]="{'background-color':task.priority == 'HIGH' ? 'rgb(175,35,58)':task.priority == 'LOW' ? 'blue': 'grey'}"
+                [ngClass]="{'badge-primary': task.priority == 'LOW','badge-warning':task.priority == 'NEUTRAL','badge-danger':task.priority == 'HIGH'}">
+                {{task.priority}}</span>
+        </div>
+        <div class=" margin-bottom">
+            Due Date: {{task.dueDate | date: 'shortDate'}}
+        </div>
+        <div class="d-flex" style="justify-content: space-between;">
+            <button type="button" class="btn btn-primary" (click)="moveTask()">{{task.status == 'completed' ? 'Delete':
+                'Move'}}
+                Task</button>
+            <button (click)="openDeleteModal()" class="transparent" style="background: transparent; border: none;">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+
+        </div>
+    </div>
+</div>

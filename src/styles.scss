@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "tailwindcss/utilities";
+
+// Font Awesome
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+// MDB SCSS
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+
+// .trans {
+//     transition: all 0.1s ease;
+// }
+
+// .trans-2 {
+//     transition: all 0.2s ease;
+// }
+
+// .trans-3 {
+//     transition: all 0.3s ease;
+// }
+
+// .trans-4 {
+//     transition: all 0.4s ease;
+// }
+
+// .ant-table-thead>tr>th {
+//     color: #8392ab;
+//     font-weight: 600;
+//     background: #ffffff;
+// }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

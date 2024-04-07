@@ -1,0 +1,51 @@
+<div class="container" style="height: 30rem;">
+    <h2 class="heading">{{type == 'new' ? 'Create':'Edit'}} Task</h2>
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="title" class="margin-y">Title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div *ngIf="userForm.controls.name?.touched && userForm.controls.name?.invalid" class="text-danger">
+                Title is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="margin-y">Description</label>
+            <input type="text" class="form-control" id="description" formControlName="description">
+            <div *ngIf="userForm.controls.name?.touched && userForm.controls.name?.invalid" class="text-danger">
+                Description is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="dueDate" class="d-block margin-y">Due Date</label>
+            <mat-form-field>
+                <input matInput [min]="minDate" [matDatepicker]="datepicker" formControlName="dueDate"
+                    placeholder="Select a date">
+                <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker></mat-datepicker>
+            </mat-form-field>
+
+            <!-- <input type="text" class="form-control" id="dueDate" formControlName="dueDate" required> -->
+            <!-- <div *ngIf="userForm.controls.email?.touched && userForm.controls.email?.invalid" class="text-danger">
+                Please enter a valid email address.
+            </div> -->
+        </div>
+
+        <div class="form-group">
+            <label for="priority" class="margin-y">Priority</label>
+            <select class="form-control" id="gender" formControlName="priority">
+                <option value="" disabled>Select Priority</option>
+                <option value="HIGH">High</option>
+                <option value="LOW">Low</option>
+                <option value="NEUTRAL">Neutral</option>
+            </select>
+            <div *ngIf="userForm.controls.priority.touched && userForm.controls.priority?.invalid" class="text-danger">
+                Please select a Priority.
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary margin-y">{{type == 'new' ? 'Submit': 'Update'}}</button>
+    </form>
+</div>
