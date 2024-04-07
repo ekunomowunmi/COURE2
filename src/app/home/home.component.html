@@ -28,16 +28,6 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul> -->
           <div *ngIf="openDropdown">
-            <!-- <mat-form-field appearance="fill">
-              <mat-label>Select Filters</mat-label>
-              <mat-select [(ngModel)]="selectedPriorities" multiple>
-                <mat-option *ngFor="let priority of priorityList;" [value]="priority">
-                  <mat-checkbox [checked]="isSelected(filter)" (change)="toggleSelection($event, filter)">{{ filter
-                    }}</mat-checkbox>
-                </mat-option>
-              </mat-select>
-            </mat-form-field> -->
-
             <mat-selection-list mdbDropdownMenu [closeOnOutsideClick]="true" class="dropdown-menu" #priorities>
               <div *ngFor="let priority of priorityList;">
                 <mat-checkbox class="dropdown-item" [checked]="isSelected"
@@ -49,7 +39,7 @@
               Options selected: {{priorities.selectedOptions.selected.length}}
             </p>
           </div>
-          <div *ngIf="openStatus">
+          <div *ngIf="openStatus" style="margin-left: 8rem; margin-top:0.5rem">
             <mat-selection-list mdbDropdownMenu class="dropdown-menu" #statuss>
               <div *ngFor="let status of statuses">
                 <mat-checkbox class="dropdown-item" (change)="onStatusFilter($event, status)">{{ status
